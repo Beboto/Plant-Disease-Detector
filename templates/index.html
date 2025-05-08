@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plant Disease Detector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>🌿 Plant Disease Detection</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Predict</button>
+    </form>
+    
+    {% if prediction %}
+        <h2>Predicted Disease: {{ prediction }}</h2>
+    {% endif %}
+
+    {% if image_url %}
+        <div style="margin-top: 20px;">
+            <h3>Uploaded Image:</h3>
+            <img src="{{ image_url }}" alt="Uploaded Leaf" style="max-width: 300px; border-radius: 10px; box-shadow: 0 0 10px black;">
+        </div>
+    {% endif %}
+</body>
+</html>
