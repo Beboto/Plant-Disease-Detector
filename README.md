@@ -4,9 +4,7 @@ A deep learning web application that detects plant diseases from leaf images usi
 
 ---
 
-## 🌐 Live Demo
-
-🔗 [Click here to try the live app](https://plant-disease-detector-7yv7.onrender.com)
+## 🌐 Live Demo: https://plant-disease-detector-7yv7.onrender.com
 
 ---
 
