@@ -2,11 +2,9 @@
 
 A deep learning web application that detects plant diseases from leaf images using a trained **SqueezeNet** model. The model is deployed via **Flask**, and users can upload an image through a simple and elegant UI to get real-time predictions.
 
----
+🌐 Live Demo: https://plant-disease-detector-7yv7.onrender.com
 
-## 🌐 Live Demo: https://plant-disease-detector-7yv7.onrender.com
 
----
 
 ## 🧠 Model Details
 
@@ -18,13 +16,11 @@ A deep learning web application that detects plant diseases from leaf images usi
 - **Training Accuracy**: ~97%
 - **Testing Accuracy**: ~94%
 
----
 
 ## 🖥️ Live UI Preview
 
 > ✨ Elegant, responsive interface with image upload, disease prediction, and dynamic result display.
 
----
 
 ## 🚀 Features
 
