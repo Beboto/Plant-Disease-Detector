@@ -5,6 +5,8 @@ from utils import predict_disease, CLASS_NAMES
 import torch
 import torch.nn as nn
 from torchvision import models
+import threading
+import time
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "static/uploads"
@@ -24,6 +26,13 @@ def load_model(model_path):
 MODEL_PATH = "best_squeezenet_1.pth"
 model = load_model(MODEL_PATH)
 
+# Function to delete the image after 10 minutes
+def delete_image_after_timeout(file_path, timeout=600):  # Default timeout is 600 seconds (10 minutes)
+    time.sleep(timeout)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        print(f"Deleted image: {file_path}")
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     prediction = None
@@ -38,6 +47,9 @@ def index():
             # Save the uploaded image
             file_path = os.path.join(app.config["UPLOAD_FOLDER"], file.filename)
             file.save(file_path)
+
+            # Start a background thread to delete the image after 10 minutes
+            threading.Thread(target=delete_image_after_timeout, args=(file_path, 600), daemon=True).start()
 
             # Load image and predict
             image = Image.open(file_path).convert("RGB")
